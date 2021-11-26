@@ -29,8 +29,8 @@ jobs:
     # CircleCI will report the results back to your VCS provider.
     steps:
       - run: 
-          name: Output Python Version
-          command: python --version
+          name: Python 3 Version
+          command: python3 --version
       - run: 
           name: Upgrade Pip
           command: pip install --upgrade pip
