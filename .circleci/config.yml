@@ -9,7 +9,7 @@ orbs:
   # Orb commands and jobs help you with common scripting around a language/tool
   # so you dont have to copy and paste it everywhere.
   # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/python
-  python: circleci/python@1.2
+  python: circleci/python@1.5
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
@@ -29,11 +29,8 @@ jobs:
     # CircleCI will report the results back to your VCS provider.
     steps:
       - run: 
-          name: Python 3 Version
-          command: python3 --version
-      - run: 
           name: Upgrade Pip
-          command: pip3 install --upgrade pip3
+          command: /opt/circleci/.pyenv/versions/3.9.7/bin/python3.9 -m pip install --upgrade pip
       - checkout
       - python/install-packages:
           pkg-manager: pip
