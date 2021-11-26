@@ -28,23 +28,14 @@ jobs:
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
     steps:
-      - run: 
-          name: Upgrade Pip
-          command: /opt/circleci/.pyenv/versions/3.9.7/bin/python3.9 -m pip install --upgrade pip
       - checkout
-      - run:
-          name: Setup Venv and install packages
-          command: |
-            python3 -m venv venv
-            source ./venv/bin/activate
-            pip install -r requirements.txt
       # - python/install-packages:
           # pkg-manager: pip
           # app-dir: ~/project/package-directory/  # If you're requirements.txt isn't in the root directory.
           # pip-dependency-file: test-requirements.txt  # if you have a different name for your requirements file, maybe one that combines your runtime and test requirements.
       - run:
           name: Run Django Tests
-          command: docker-compose run app sh -c "./venv/bin/python3 manage.py test && flake8"
+          command: docker-compose run app sh -c "python3 manage.py test && flake8"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
